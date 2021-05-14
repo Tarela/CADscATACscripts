@@ -1,5 +1,5 @@
 #!/bin/bash
-maindir=/home/your_folder/
+maindir=$1
 annotation=${maindir}/annotation/
 ref_fasta=${annotation}/hg38.fa
 chrom_sizes=${annotation}/hg38.chrom.sizes
