@@ -1,11 +1,32 @@
-# ncHMR_detector: Detecting non-classical function of histone modification regulator with ChIP-seq intergration
+# Scripts for CAD scATAC data analysis
+# Single cell chromatin accessibility landscape of human coronary arteries reveals cell type specific regulatory programs and annotates disease risk variants
 
-Histone modification regulators (HMR) play important roles in many biological process and function by catalyzing or binding known histone modifications. Abundant studies mapped the genome-wide profiles of HMRs through ChIP-Seq and most of them only focused on the relationship between HMRs and their known histone modification substrates. However, there were still some studies showed that several HMRs can bind to non-classic sites (defined as without colocalization of known histone modifications) which were involved in development, differentiation et al. Thus, HMRpipe is sepcifically designed for detecting non-classic function of given HMR and predicting the potential co-factors of the non-classic function.
+This repo contains all the data analysis scripts in the manuscript "Single cell chromatin accessibility landscape of human coronary arteries reveals cell type specific regulatory programs and annotates disease risk variants". In the repo, scATAC_analysis.r is for single cell ATAC-seq data analysis, scRNA_analysis.r is for single cell RNA-seq data analysis, and SVMpipeline/ is for the variant effect predictions using ATAC-seq peaks. See the details in the sections below. 
 
-Idea of HMR non-classic function and the workflow for detection
-![GitHub Logo](old_versions/image/workflow.png)
+## 0. Requirements
+The following environments/packages are required to run the scripts. 
+single cell data analysis (scATAC_analysis.r and scRNA_analysis.r)
+- R >= 4.0
+- ArchR v1.0.1
+- Seurat v4.0.0
+- dplyr v1.0.4
+- patchwork v1.1.1
+- colorRamps v2.3
 
-## 0. Webserver version!
+variant scoring (SVMpipeline)
+- lsgkm https://github.com/kundajelab/lsgkm
+- python v3.7
+- perl v5.16
+- numpy v1.20
+- pandas v1.1
+- scipy v1.4
+- IPython v7.21
+- matplotlib v3.2
+- plotnine v0.7
+
+
+
+## 1. single cell 
 In case you don't want to install and run ncHMR_detector on your own machine but still interested in our method, we provided our new webserver for the online detection of the non-classical function. Simply provided us the data of your interested TF (ChIP-seq or other associated data) and we will do all the detections and explorations for you!
 Get more information and try our webserver at [ncHMR web detector](http://compbio-zhanglab.org/ncHMR_detector/index.php)
 
