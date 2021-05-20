@@ -50,7 +50,15 @@ The scATAC data were generated for this study and pre-processed with 10x cellran
 ## 2. single cell RNA-seq (scRNA) data analysis
 All the scripts for the scRNA data analysis were included in the scRNA_analysis.r. 
 
-The scRNA data were generated in a previous study in the same system as scATAC (Wirka et al., Nat Med. 2019, GSE131778). The main propose for the scRNA data analysis is to generate a scRNA reference database for the integration analysis and label transferring analysis of the scATAC data.
+The scRNA data were generated in a previous study in the same system as scATAC (Wirka et al., Nat Med. 2019, GSE131778). The main propose for the scRNA data analysis is to generate a scRNA reference database for the integration analysis and label transferring analysis of the scATAC data. The script contains following parts.
+- cell and gene filtering
+- dimensional reduction 
+- cell clustering
+- UMAP visualization
+- comparing the marker genes (Wirka et al., Nat Med. 2019, GSE131778) versus cell clustering 
+- cell type assignment based on marker genes
+- check knowledge based marker genes versus cell type assignment
+
 
 ## 3. Variant effect predictions using ATAC-seq peaks
 All the scripts for the variant scoring analysis were included in the SVMpipeline/ folder. 
