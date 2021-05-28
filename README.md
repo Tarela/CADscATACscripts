@@ -27,7 +27,7 @@ Variant scoring (SVMpipeline)
 - two annotation data [hg38.fa](https://www.dropbox.com/s/el46t6onl67ejhh/hg38_clean.fa?dl=0) and [hg38.chrom.sizes](https://www.dropbox.com/s/6pf8473bot9wxlv/hg38.chrom.sizes?dl=0)
 
 ## 1. single cell ATAC-seq (scATAC) data analysis
-All the scripts for the scATAC data analysis were included in the scATAC_analysis.r
+All the scripts for the scATAC data analysis were included in the 1_scATAC_analysis.r
 
 The scATAC data were generated for this study and pre-processed with 10x cellranger-atac pipeline (v1.2.0, with default parameters). The output files from the cellranger-atac pipeline were used as the input for the script. The script contains following parts.
 - basicQC
@@ -48,7 +48,7 @@ The scATAC data were generated for this study and pre-processed with 10x cellran
 - generating other plots for the manuscript
 
 ## 2. single cell RNA-seq (scRNA) data analysis
-All the scripts for the scRNA data analysis were included in the scRNA_analysis.r. 
+All the scripts for the scRNA data analysis were included in the 2_scRNA_analysis.r. 
 
 The scRNA data were generated in a previous study in the same system as scATAC (Wirka et al., Nat Med. 2019, GSE131778). The main propose for the scRNA data analysis is to generate a scRNA reference database for the integration analysis and label transferring analysis of the scATAC data. The script contains following parts.
 - cell and gene filtering
@@ -61,7 +61,7 @@ The scRNA data were generated in a previous study in the same system as scATAC (
 
 
 ## 3. Variant effect predictions using ATAC-seq peaks
-All the scripts for the variant scoring analysis were included in the SVMpipeline/ folder. 
+All the scripts for the variant scoring analysis were included in the 3_SVMpipeline/ folder. 
 
 The pipeline and the lsgkm packge were inherited from Corces et al., Nat Genet 2020, Ghandi et al., PLoS Comput Biol 2014, Lee et al., Bioinformatics 2016, and Shrikumar et al., bioinformatics 2019. We acknowledge the helps from Dr. Anshul Kundaje and Soumya Kundu at Standford University
 
@@ -78,3 +78,19 @@ $ ./process.sh SMC /abspath/yourfolder/forSVMpipeline/ /abspath/yourfolder/forLS
 ```
 
 note that the ATAC-seq peaks were located in the celltype_peaks/ folder. Users could change the parameter SMC in the above code to any other cell type listed, or customarize a peak files in the similar format for users' own data and run the pipeline in a similar way. 
+
+## 4. Overlap of coronary artery scATAC peaks with CAD GWAS data, calculation of chromatin accessibility QTLs
+
+All the scripts for the variant scoring analysis were included in the 4_RASQUAL_caQTL/ folder. 
+
+This section first contains information for overlapping coronary artery cell type peaks with CAD SNPs from two recent CAD GWAS meta-analyses van der Harst P and Verweij N., Circulation Research. 2018. and Koyama S et al., Nature Genetics. 2020. The materials were included in the 4_RASQUAL_caQTL/peak_gwas_overlap/ folder.
+
+We also include scripts used for performing cell-type specific LD score regression in the 4_RASQUAL_caQTL/ldsc/ folder.  This section finally contains scripts used for calculating chromatin accessibility QTLs (caQTLs) within individual coronary artery cell types using RASQUAL (Robust Allele Specific QUantification and quality controL, Kumasaka et al. Nat Genet 2015). All of the caQTL scripts are in the 4_RASQUAL_caQTL/single_cell_ASE_QTL/ folder.
+
+We used the scripts provided with the [RASQUAL](https://github.com/boxiangliu/hcasmc_eqtl/tree/master/rasqual) package plus adapted scripts from Liu et al., Am J Hum Genet. 2018. We thank Natsuhiko Kumasaka and Boxiang Liu for their assistance with RASQUAL. 
+
+Here we provide information for:
+- Generation of RASQUAL input files using [rasqualTools](https://github.com/kauralasoo/rasqual/tree/master/rasqualTools)
+- Generation of allele-specific vcf files from cell type bam files and patient genotype VCF files. We bypassed the qcfilterBam step in the createASVCF.sh script due to incompatibility with single cell bam files.
+- Running RASQUAL for cell type peaks and variants within a 10 kb window.
+
