@@ -1,7 +1,6 @@
 # Scripts for CAD scATAC data analysis
-# Single cell chromatin accessibility landscape of human coronary arteries reveals cell type specific regulatory programs and annotates disease risk variants
-
-This repo contains all the data analysis scripts in the manuscript "Single cell chromatin accessibility landscape of human coronary arteries reveals cell type specific regulatory programs and annotates disease risk variants". In the repo, scATAC_analysis.r is for single cell ATAC-seq data analysis, scRNA_analysis.r is for single cell RNA-seq data analysis, and SVMpipeline/ is for the variant effect predictions using ATAC-seq peaks. See the details in the sections below. 
+# Cell-specific landscape of human coronary artery resolves regulatory mechanisms of disease risk"
+This repo contains all the data analysis scripts in the manuscript "Cell-specific landscape of human coronary artery resolves regulatory mechanisms of disease risk". In the following repo, 1_scATAC_analysis.r includes scripts for the single cell ATAC-seq data analysis, 2_scRNA_analysis.r includes scripts for the single cell RNA-seq data analysis, and 3_SVMpipeline/ and 4_RASQUAL_caQTL/ folders include various scripts for the variant effect predictions and allele-specific based caQTL mapping analyses using scATAC-seq peaks, respectively. See the details in the sections below. 
 
 ## 0. Requirements
 The following environments/packages are required to run the scripts. 
