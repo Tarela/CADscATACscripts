@@ -1,4 +1,4 @@
-# Scripts for CAD scATAC data analysis
+# Scripts for CAD scATAC data analysis. 
 # "Cell-specific landscape of human coronary artery resolves regulatory mechanisms of disease risk"
 This repo contains all the data analysis scripts in the manuscript "Cell-specific landscape of human coronary artery resolves regulatory mechanisms of disease risk". In the following repo, 1_scATAC_analysis.r includes scripts for the single cell ATAC-seq data analysis, 2_scRNA_analysis.r includes scripts for the single cell RNA-seq data analysis, and 3_SVMpipeline/ and 4_RASQUAL_caQTL/ folders include various scripts for the variant effect predictions and allele-specific based caQTL mapping analyses using scATAC-seq peaks, respectively. See the details in the sections below. 
 
