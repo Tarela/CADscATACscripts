@@ -17,9 +17,9 @@ n_rsnp=${param[3]}
 n_fsnp=${param[4]}
 exon_start_positions=${param[5]}
 exon_end_positions=${param[6]}
-feat_id=$(grep $gene_id -n Macrophage_input_4/Y.txt | cut -d":" -f1,1)
+feat_id=$(grep $gene_id -n bulk_35_input/Y.txt | cut -d":" -f1,1)
 window_size=20402
-n_sample=39
+n_sample=35
 echo id: $gene_id 
 echo name: $gene_name 
 echo region: $region

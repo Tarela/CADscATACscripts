@@ -10,11 +10,11 @@ module load gsl/2.4
 module load rasqual
 module load tabix
 module load gparallel/20170822 
-n_lines=$(wc -l Macrophage_input_3/rasqual.Macrophage.input.txt | cut -d" " -f1)
+n_lines=$(wc -l Macrophage_input_4/rasqual.Macrophage.input.txt | cut -d" " -f1)
 parallel -j10 bash rasqual.perm_Macrophage.sh \
-Macrophage_input_3/rasqual.Macrophage.input.txt {} \
-Macrophage_input_3/Y.bin \
-Macrophage_input_3/K.bin \
-Macrophage_input_3/X.bin \
+Macrophage_input_4/rasqual.Macrophage.input.txt {} \
+Macrophage_input_4/Y.bin \
+Macrophage_input_4/K.bin \
+Macrophage_input_4/X.bin \
 asvcf/UVA_hg38_coronary_scATAC_macrophage_AS.vcf.gz \
-Macrophage_output_3_perm1 ::: `seq $n_lines`
+Macrophage_output_4_perm1 ::: `seq $n_lines`

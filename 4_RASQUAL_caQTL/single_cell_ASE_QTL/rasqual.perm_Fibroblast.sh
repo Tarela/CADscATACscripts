@@ -18,7 +18,7 @@ n_fsnp=${param[4]}
 exon_start_positions=${param[5]}
 exon_end_positions=${param[6]}
 feat_id=$(grep $gene_id -n Fibroblast_input_3/Y.txt | cut -d":" -f1,1)
-window_size=10000
+window_size=20402
 n_sample=26
 echo id: $gene_id 
 echo name: $gene_name 
@@ -37,7 +37,7 @@ else
     -s $exon_start_positions -e $exon_end_positions \
     --imputation-quality 0.8 --imputation-quality-fsnp 0.8 \
     --cis-window-size $window_size \
-    -f $gene_name --n_threads 1 \
-    --random-permutation -t \
+    -f $gene_name --n_threads 10 \
+    --random-permutation -t -p 5 \
     --force -v > $out_dir/${gene_id}_${gene_name}.txt
 fi 
