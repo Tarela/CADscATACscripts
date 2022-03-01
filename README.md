@@ -94,3 +94,7 @@ Here we provide information for:
 - Generation of allele-specific vcf files from cell type bam files and patient genotype VCF files. We bypassed the qcfilterBam step in the createASVCF.sh script due to incompatibility with single cell bam files.
 - Running RASQUAL for cell type peaks and variants within a 10 kb window.
 
+## 5. bulk data process (bulk ATAC-seq, H3K27ac ChIP-seq)
+The cmd lines for processing bulk data can be found in 5_bulkDataAnalysis/bulkdata_process.sh. All the related scripts and configuration files can be found in the same folder.
+
+
