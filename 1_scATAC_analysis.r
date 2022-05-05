@@ -85,6 +85,14 @@ p1 <- plotFragmentSizes(ArchRProj = proj_CAD_1)
 p2 <- plotTSSEnrichment(ArchRProj = proj_CAD_1)
 plotPDF(p1,p2, name = "QC-Sample-FragSizes-TSSProfile.pdf", ArchRProj = proj_CAD_1, addDOC = FALSE, width = 5, height = 5)
 
+
+# filter cells
+proj_CAD_2 <- filterDoublets(proj_CAD_1,filterRatio=1.5)
+idxPass <- which(proj_CAD_2$TSSEnrichment >= 7 & proj_CAD_2$nFrags >= 10000)
+df2 <- getCellColData(proj_CAD_2,select = c("log10(nFrags)", "TSSEnrichment"))
+cellsPass <- proj_CAD_2$cellNames[idxPass]
+proj_CAD_2 <- proj_CAD_2[cellsPass, ]
+
 p <- ggPoint(
     x = df2[,"log10(nFrags)"], 
     y = df2[,"TSSEnrichment"], 
@@ -95,15 +103,7 @@ p <- ggPoint(
     xlim = c(3, quantile(df2[,"log10(nFrags)"], probs = 0.99)),
     ylim = c(4, quantile(df2[,"TSSEnrichment"], probs = 0.99))
 ) + geom_hline(yintercept = 7, lty = "dashed") + geom_vline(xintercept = 4, lty = "dashed")
-plotPDF(p, name = "TSS-vs-Frags_cutoff.pdf", ArchRProj = proj_CAD_1, addDOC = FALSE)
-
-
-# filter cells
-proj_CAD_2 <- filterDoublets(proj_CAD_1,filterRatio=1.5)
-idxPass <- which(proj_CAD_2$TSSEnrichment >= 7 & proj_CAD_2$nFrags >= 10000)
-df2 <- getCellColData(proj_CAD_2,select = c("log10(nFrags)", "TSSEnrichment"))
-cellsPass <- proj_CAD_2$cellNames[idxPass]
-proj_CAD_2 <- proj_CAD_2[cellsPass, ]
+plotPDF(p, name = "TSS-vs-Frags_cutoff.pdf", ArchRProj = proj_CAD_2, addDOC = FALSE)
 
 # dimensional reduction
 proj_CAD_2 <- addIterativeLSI(
