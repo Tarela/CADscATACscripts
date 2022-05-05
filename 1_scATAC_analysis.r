@@ -95,12 +95,12 @@ p <- ggPoint(
     xlim = c(3, quantile(df2[,"log10(nFrags)"], probs = 0.99)),
     ylim = c(4, quantile(df2[,"TSSEnrichment"], probs = 0.99))
 ) + geom_hline(yintercept = 7, lty = "dashed") + geom_vline(xintercept = 4, lty = "dashed")
-plotPDF(p, name = "TSS-vs-Frags_cutoff.pdf", ArchRProj = proj_CAD_2, addDOC = FALSE)
+plotPDF(p, name = "TSS-vs-Frags_cutoff.pdf", ArchRProj = proj_CAD_1, addDOC = FALSE)
 
 
 # filter cells
-idxPass <- which(proj_CAD_2$TSSEnrichment >= 7 & proj_CAD_2$nFrags >= 10000)
 proj_CAD_2 <- filterDoublets(proj_CAD_1,filterRatio=1.5)
+idxPass <- which(proj_CAD_2$TSSEnrichment >= 7 & proj_CAD_2$nFrags >= 10000)
 df2 <- getCellColData(proj_CAD_2,select = c("log10(nFrags)", "TSSEnrichment"))
 cellsPass <- proj_CAD_2$cellNames[idxPass]
 proj_CAD_2 <- proj_CAD_2[cellsPass, ]
