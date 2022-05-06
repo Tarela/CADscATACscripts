@@ -213,6 +213,8 @@ markersGS <- getMarkerFeatures(
 markerList <- getMarkers(markersGS, cutOff = "FDR <= 0.01 & Log2FC >= 1")
 
 # knowledge based marker genes for different cell types
+uniq_symbol <- unique(proj_CAD_2@geneAnnotation$genes$symbol)
+
 DSMCmarker <- c("MYOCD","SRF","TEAD3","TEAD4","ACTA2","MYH11","TAGLN","LMOD1","CNN1","TPM2","MYL9")
 MSMCmarker <- c("TCF21","KLF4","FN1","LUM","TNFRSF11B","BGN")
 Emarker <- c("KLF2","PECAM1","CLDN5","PLVAP","ACKR1","EGFL7", "NFKB1","NFKB2","VCAM1","SELE")
